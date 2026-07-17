@@ -25,6 +25,3 @@ dev = [
     "ruff>=0.15.21",
     "ty>=0.0.60",
 ]
-
-[tool.ruff]
-cache-dir = "~/.cache/ruff"
