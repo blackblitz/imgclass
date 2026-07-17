@@ -2,15 +2,13 @@ FROM python:3.14.6-slim-trixie AS base
 COPY --from=ghcr.io/astral-sh/uv:0.11.29 /uv /usr/local/bin
 WORKDIR /app
 
+ARG NO_DEV=true
+ENV RUFF_NO_CACHE=true UV_NO_DEV=$NO_DEV UV_NO_SYNC=true
+
 COPY . .
 RUN uv sync --frozen
 
 RUN useradd -m -u 1000 app
 USER app
 
-FROM base AS dev
-EXPOSE 2718
-CMD ["uv", "run", "marimo", "edit", "--host=0.0.0.0"]
-
-FROM base AS prod
 CMD ["uv", "run", "imgclass"]
