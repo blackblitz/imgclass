@@ -9,6 +9,7 @@ COPY . .
 RUN uv sync --frozen
 
 RUN useradd -m -u 1000 app
+RUN if [ $NO_DEV = false ]; then chown -R app:app /app; fi
 USER app
 
 CMD ["uv", "run", "imgclass"]
