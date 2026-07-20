@@ -1,5 +1,6 @@
 FROM python:3.14.6-slim-trixie AS base
 COPY --from=ghcr.io/astral-sh/uv:0.11.29 /uv /usr/local/bin
+ENV UV_LOCKED=true
 WORKDIR /app
 RUN useradd -m -u 1000 app
 
