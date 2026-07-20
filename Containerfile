@@ -10,7 +10,7 @@ RUN uv sync --frozen
 
 RUN useradd -m -u 1000 app
 RUN if [ $NO_DEV = false ]; then \
-        apt-get update && apt-get install -y git vim && \
+        apt-get update && apt-get install -y git helix && \
         chown -R app:app /app; \
     fi
 USER app
