@@ -14,7 +14,7 @@ RUN apt-get update && \
     rm -f "$TEMP"
 USER app
 WORKDIR /home/app
-COPY . .
+COPY --chown=app:app . .
 RUN uv sync --locked
 
 FROM base AS prod
